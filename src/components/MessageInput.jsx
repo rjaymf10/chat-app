@@ -27,7 +27,7 @@ const MessageInput = ({ inputRef, waiting, handleClick }) => {
       <input
         className="chat_msg_input"
         type="text"
-        name="chat"
+        name="query"
         placeholder="Enter a message."
         ref={inputRef}
         disabled={waiting}

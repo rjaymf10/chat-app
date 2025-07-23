@@ -30,7 +30,7 @@ function App() {
   /** Reference variable for message input button. */
   const inputRef = useRef();
   /** Host URL */
-  const host = "http://localhost:9000"
+  const host = "http://localhost:3000/api"
   /** URL for non-streaming chat. */
   const url = host + "/chat";
   /** URL for streaming chat. */
@@ -86,7 +86,7 @@ function App() {
   const handleNonStreamingChat = async () => {
     /** Prepare POST request data. */
     const chatData = {
-      chat: inputRef.current.value,
+      query: inputRef.current.value,
       history: data
     };
 
@@ -121,7 +121,7 @@ function App() {
       var modelResponse = ""
       try {
         const response = await axios.post(url, chatData, headerConfig);
-        modelResponse = response.data.text
+        modelResponse = response.data.response
       } catch (error) {
         modelResponse = "Error occurred";
       }finally {
@@ -150,7 +150,7 @@ function App() {
   const handleStreamingChat = async () => {
     /** Prepare POST request data. */
     const chatData = {
-      chat: inputRef.current.value,
+      query: inputRef.current.value,
       history: data
     };
 
