@@ -25,6 +25,7 @@ import './App.css';
 import ConversationDisplayArea from './components/ConversationDisplayArea.jsx';
 import Header from './components/Header.jsx';
 import MessageInput from './components/MessageInput.jsx';
+import FileUploader from './components/FileUploader.jsx';
 
 function App() {
   /** Reference variable for message input button. */
@@ -64,7 +65,7 @@ function App() {
 
   /** Function to validate user input. */
   function validationCheck(str) {
-    return str === null || str.match(/^\s*$/) !== null;
+    return str === null || str.match(/^s*$/) !== null;
   }
 
   /** Handle form submission. */
@@ -248,6 +249,7 @@ function App() {
   return (
     <center>
       <div className="chat-app">
+        <FileUploader />
         <Header toggled={toggled} setToggled={setToggled} />
         <ConversationDisplayArea data={data} streamdiv={streamdiv} answer={answer} />
         <MessageInput inputRef={inputRef} waiting={waiting} handleClick={handleClick} />
