@@ -33,7 +33,7 @@ function App() {
   /** Host URL */
   const host = "http://localhost:3000/api"
   /** URL for non-streaming chat. */
-  const url = host + "/chat";
+  const url = host + "/generate";
   /** URL for streaming chat. */
   const streamUrl = host + "/stream";
   /** State variable for message history. */
