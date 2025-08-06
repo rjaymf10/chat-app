@@ -6,7 +6,15 @@ const FileUploader = () => {
   const [uploadStatus, setUploadStatus] = useState('');
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      setSelectedFile(file);
+      setUploadStatus(''); // Clear any previous error message
+    } else {
+      setSelectedFile(null);
+      setUploadStatus('Only PDF files are allowed.');
+    }
+
   };
 
   const handleUpload = async () => {
@@ -20,7 +28,9 @@ const FileUploader = () => {
 
     try {
       setUploadStatus('Uploading...');
-      const response = await fetch('http://localhost:3000/api/upload', {
+      const host = "http://localhost:3000/api";
+      const url = host + "/upload/";
+      const response = await fetch(url, {
         method: 'POST',
         body: formData,
         // You might need to add headers here depending on your API
